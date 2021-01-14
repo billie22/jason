@@ -196,8 +196,6 @@
 
 
 /* 화살표버튼  */
-/* #wrap #main #section3 .wrap .gap .container .content .slide-container .arrow-wrap {z-index:2; position:absolute;bottom:4px;right:185px;width:calc(41px*2);height:41px;} */ 
-/* right 값 계산 (1570-1200)/2=185px         185/1570=0.117834394%      11.78343% -> 10%로 수정*/
 #wrap #main #section3 .wrap .gap .container .content .slide-container .arrow-wrap {z-index:2;position:absolute;bottom:4px;right:8%;width:calc(41px*2);height:41px;}
 #wrap #main #section3 .wrap .gap .container .content .slide-container .arrow-wrap li {float:left;width:50%;height:100%;}
 #wrap #main #section3 .wrap .gap .container .content .slide-container .arrow-wrap li a {display:block;width:100%;height:100%;background:#2e3192;text-align:center;line-height:41px;}

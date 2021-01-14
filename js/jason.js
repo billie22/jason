@@ -114,8 +114,6 @@
                         $('.sub').stop().slideUp(300);
                     }
                 });
-
-
                 
         },
         section1Fn:function(){
@@ -133,8 +131,7 @@
             var tCnt = 0; 
 
             
-            
-            /////////// slide ////////////////////////////////////////////////////////
+            /////////// slide /////////////////////
 
             //메인 슬라이드 함수
             function mainSlideFn(){               
@@ -248,7 +245,7 @@
             setTimeout(autoTimerFn,10);
 
 
-            /////////// smooth button ////////////////////////////////////////////////
+            /////////// smooth button /////////////////////
             $smoothBtn.on({
                 click:  function(e){
                     e.preventDefault();
@@ -259,7 +256,7 @@
             });
                        
 
-            /////////// resize ////////////////////////////////////////////////
+            /////////// resize //////////////////////////
             var winW = $(window).width();
             var winH = $(window).height();
                 
