@@ -34,7 +34,7 @@
                     },
                     mouseleave:function(){
                         that = $(this);
-                        if( $scroll === false && m === 0 ){ //두 조건 모두 만족시 헤더 배경 없어짐
+                        if( $scroll === false && m === 0 ){ 
                             that.removeClass('addHeader'); 
                         }
                     }
@@ -44,7 +44,7 @@
                 $window.scroll(function(){
                     that = $(this);
                     if( that.scrollTop() >= 30 ){
-                        $scroll = true;  //스크롤 10px 이상인경우 true 변경
+                        $scroll = true;  
                         $header.addClass('addHeader');
                         if( t===false ){
                             t=true;

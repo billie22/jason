@@ -7,7 +7,7 @@
 #wrap #header .wrap .header-gap {width:auto;height:100%;margin:0 20px;}
 #wrap #header .wrap .header-gap .container {width:100%;height:100%;}
 #wrap #header .wrap .header-gap .container > ul {width:100%;}
-#wrap #header .wrap .header-gap .container > ul > li {width:auto;} /* 세칸으로 나눠짐 */
+#wrap #header .wrap .header-gap .container > ul > li {width:auto;} 
 
 
 /* logo */
