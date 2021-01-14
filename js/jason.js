@@ -14,27 +14,27 @@
 
         },
         heaerFn:function(){
-            var that     = null;
-            var $window  = $(window);            
-            var $heaer   = $('#header');
-            var $nav     = $('#nav');
+            var that = null;
+            var $window = $(window);            
+            var $header = $('#header');
+            var $nav = $('#nav');
             var $menuBar = $('.menu-bar');
-            var $mainBtn = $('.main-btn');
-            var $sub     = $('.sub');
-            var $scroll  = false;
-            var t        = false;
-            var m        = 0; //메뉴 클릭 안한 상태
-            var s        = -1; //부호 기본값 양수 -1
-            var topPos   = 124;
+            var $mainBtn = $('.mainBtn');
+            var $scroll = false;
+            var t = false;
+            var m = 0; //메뉴 클릭 안한 상태
+            var s = 1;
+            var topPos = 124;
+           
 
-                $heaer.on({                    
+                $header.on({                    
                     mouseenter:function(){
                         that = $(this);
                         that.addClass('addHeader'); 
                     },
                     mouseleave:function(){
                         that = $(this);
-                        if( $scroll === false && m === 0 ){ //두조건 모두 만족시 헤더 배경 없어짐
+                        if( $scroll === false && m === 0 ){ //두 조건 모두 만족시 헤더 배경 없어짐
                             that.removeClass('addHeader'); 
                         }
                     }
@@ -45,7 +45,7 @@
                     that = $(this);
                     if( that.scrollTop() >= 30 ){
                         $scroll = true;  //스크롤 10px 이상인경우 true 변경
-                        $heaer.addClass('addHeader');
+                        $header.addClass('addHeader');
                         if( t===false ){
                             t=true;
                             var headerH = $('#header').height();
@@ -55,69 +55,45 @@
                     }
                     else{
                         t=false;
-                        $scroll = false;  //스크롤 10px 이하인경우 false 변경
-                        if( m===0 ){ //햄버거 메뉴 클릭안된상태만 헤더 배경없어짐
-                            $heaer.removeClass('addHeader');
+                        $scroll = false;  //스크롤 10px 이하인 경우 false 변경
+                        if( m===0 ){ //햄버거 메뉴 클릭 안 된 상태만 헤더 배경 없어짐
+                            $header.removeClass('addHeader');
                         }
                         
                     }
                 });
 
-
-                //1024 초과이면 $('#nav') top:124
-                //1024 이하이면 $('#nav') top:84
-                //780  이하이면 $('#nav') top:64
-
-                $window.resize(function(){
-                    resizeFn();        
-                });
+                //1024 초과이면 $('#nav) top:124
+                //1024 이하이면 $('#nav) top:84
+                //780 이하이면 $('#nav) top:64
                 
-
-                //화면의 크기 변화에 따른 반응형 데스크톱, 태블릿, 모바일 메뉴
-                function resizeFn(){
-
-                    if( $window.innerWidth()>1024 ){ //1024초과 모두
+                $(window).resize(function(){
+                    if( $(this).innerWidth()>1024 ){
                         topPos = 124;
-                        $sub.stop().slideUp(0);
-                        $nav.stop().show(0).animate({top:(s*topPos)},300); //처음 로딩시 -1 
                     }
-                    else if( $window.innerWidth()>780 ){//781~1024
+                    else if( $(this).innerWidth()>780 ){
                         topPos = 84;
-                        $sub.stop().slideUp(0);
-                        $nav.stop().show(0).animate({top:(s*topPos)},300); //처음 로딩시 -1 
                     }
-                    else{ //0~780이하
-                        topPos = 0;
-                        $sub.stop().slideDown(0);
-                        $nav.stop().animate({top:0},0); //처음 로딩시 -1 
-                        if(m==1){
-                            $nav.show(0);
-                            $('html').addClass('addScroll');
-                        }
-                        else{
-                            $nav.hide(0);
-                            $('html').removeClass('addScroll');
-                        }
-                    }    
-                   
-                }
-                $nav.hide(0);
-                setTimeout(resizeFn,10);
+                    else {
+                        topPos = 64;
+                    }
+                });
+       
 
                 //햄버거 메뉴 클릭하면 기억하는 변수 설정
-                //NAV  네비게이션 이벤트
+                //NAV 네비게이션 이벤트
                 $menuBar.on({
                     click:  function(e){
                         e.preventDefault();
-                        if(m==0){ //처음 클릭(토글)
+                        if(m==0){
                             m = 1;
-                            s = 1; //부호(sign) + 양수                           
+                            s = 1; //부호 + 양수
                         }  
-                        else{ //두번째 클릭(토글)
+                        else{
                             m = 0;
-                            s = -1; //부호(sign) - 음수
-                        }        
-                        resizeFn(); //버튼의 클릭시 변화를 주는 반응형 함수            
+                            s = -1; //부호 - 음수
+                        }
+                        $nav.stop().animate({top:(s*topPos)},300);                      
                         $(this).toggleClass('addBtn');
                     }
                 });
@@ -126,34 +102,27 @@
                 //메인버튼 이벤트
                 $mainBtn.on({
                     mouseenter: function(){
-
-                        if( $window.innerWidth() > 780 ){
-                            $sub.stop().slideUp(100);
-                            $(this).next('.sub').stop().slideDown(300);
-                        }
-                           
-
+                        $('.sub').stop().slideUp(100);
+                        $(this).next('.sub').stop().slideDown(300);
                     }
                 });
 
                 //서브메뉴 사라지는 효과 이벤트
-                //#nav 를 떠나면 사라짐
-                $nav.on({
+                //마우스가 #nav 영역을 떠나면 사라짐
+               $nav.on({
                     mouseleave: function(){
-                        $sub.stop().slideUp(300);
+                        $('.sub').stop().slideUp(300);
                     }
                 });
 
 
-
-
-
+                
         },
         section1Fn:function(){
             var cnt = 0;
             var n = $('#section1 .slide').length-2; //4
-            var $slide = $('#section1 .slide');
-            var $nextBtn = $('#section1 .next-btn');
+            var $sldie = $('#section1 .slide'); //4
+            var $nextBtn = $('#section1 .next-btn'); /* #section1 추가 */
             var $prevBtn = $('#section1 .prev-btn');
             var $slideWrap = $('#section1 .slide-wrap');
             var $pageBtn = $('#section1 .page-btn');
@@ -294,13 +263,12 @@
             var winW = $(window).width();
             var winH = $(window).height();
                 
-                //여기서부터 식사하고 진행...
                 function resizeFn(){
                     winW = $(window).width(); //리얼하게 너비
                     winH = $(window).height();//리얼하게 높이                    
                     $('#section1').css({ height:winH }); //리얼하게 적용
                     $('#section2').css({ marginTop:winH }); //리얼하게 적용
-                    $slide.css({ width:winW });  //리얼하게 적요
+                    $sldie.css({ width:winW });  //리얼하게 적요
                 }
                 setTimeout(resizeFn,10);
 
@@ -334,7 +302,6 @@
 
         },
         section3Fn:function(){
-
             //박스높이 slide View Box 너비가 1360이하이면 높이 자동 설정 높이 설정  
             var $window    = $(window);
             var $winW      = $(window).innerWidth();
@@ -343,20 +310,22 @@
             var $pageWrap  = $('#section3 .page-wrap');
             var $slideBg   = $('#section3 .slide-bg-image');
             var $slideBgW  = $('#section3 .slide-bg-image').innerWidth();
-               
+
+                // $pageBtnW = $('#section3 .pageBtn').innerWidth();
+                // $slideBgW.css({height:});
 
                 function resizeFn(){
                     $winW = $(window).innerWidth();
                     $pageBtnW  = $('#section3 .pageBtn').innerWidth();
                     $slideBgW  = $('#section3 .slide-bg-image').innerWidth();
 
-                    if($winW<=1360){
+                    if($winW<=1360){                //570/1360=0.419117647
                         $slideView.css({height:$winW*0.419117647}); //570 = 1360 * 0.419117647
                         $pageWrap.css({height:$pageBtnW});
                         $slideBg.css({height:$slideBgW });
                     }
                     else{
-                        $slideView.css({height:570}); //570 = 1360 * 0.419117647
+                        $slideView.css({height:570}); 
                     }                
                 }   
                 
@@ -367,19 +336,19 @@
                 });
 
 
-
                 //페이드 인아웃 반응형 슬라이드 웹개발
-                var cnt      = 0;
-                var setId    = null;
-                var n        = $('#section3 .slide').length-1; //2 = 3-1 = index number(0 1 2)
+
+                var cnt = 0;
+                var setId = null;
+                var n = $('#section3 .slide').length-1; //2 = 3-1 = index number(0 1 2)
                 var $nextBtn = $('#section3 .nextBtn');
                 var $prevBtn = $('#section3 .prevBtn');
                 var $slide   = $('#section3 .slide');
                 var $pageBtn = $('#section3 .pageBtn');
-                var a = [1,2]; 
+                var a = [1,2];
 
+                ///////////////1.메인 슬라이드 페이드 인아웃 함수////////////////
 
-                //1.메인 슬라이드 페이드인아웃 함수 //////////
                 //1-1메인 다음 슬라이드 함수
                 function mainNextSlideFn(){
                     $slide.css({zIndex:1}); //초기화 모든 슬라이드 zIndex:1
@@ -387,6 +356,7 @@
                     $slide.eq(cnt).css({zIndex:3}).animate({opacity:0},0).animate({opacity:1},1000); //현재 슬라이드
                     pageBtnFn();                    
                 }
+
                 //1-2메인 이전 슬라이드 함수
                 function mainPrevSlideFn(){
                     $slide.css({zIndex:1,opacity:1}); //초기화 모든 슬라이드 zIndex:1 opacity:1
@@ -394,43 +364,44 @@
                     $slide.eq(cnt==n?0:cnt+1).css({zIndex:3}).animate({opacity:1},0).animate({opacity:0},1000); //현재 슬라이드                    
                     pageBtnFn();                    
                 }
+                
+                ///////////////2.카운트 함수 이벤트////////////////
 
-
-                //2. 카운트 함수 이벤트 //////////
                 //2-1메인 다음 카운트 슬라이드 함수
                 function nextCountFn(){
                     cnt++;
                     if(cnt>n){cnt=0}
                     mainNextSlideFn();
                 }
+                
                 //2-2메인 이전 카운트 슬라이드 함수
                 function prevCountFn(){
                     cnt--;
                     if(cnt<0){cnt=n}
                     mainPrevSlideFn();
                 }
-                
 
 
+                ///////////////3.버튼 클릭 이벤트////////////////
 
-                //3. 버튼 클릭 이벤트 //////////
-                //3-1 다음 화살 버튼 클릭 이벤트
+                //3-1 다음 화살버튼 클릭 이벤트
                 $nextBtn.on({
-                    click:  function(e){
+                    click:function(e){
                         e.preventDefault();
                         nextCountFn();
                     }
-                });                
-                //3-2 이전 화살 버튼 클릭 이벤트
+                })
+                //3-1 이전 화살버튼 클릭 이벤트
                 $prevBtn.on({
-                    click:  function(e){
+                    click:function(e){
                         e.preventDefault();
                         prevCountFn();
                     }
-                });
+                })
 
 
-                //4. 페이지 버튼(인디게이터 버튼) 이벤트 함수 //////////
+                ///////////////4.페이지 버튼(인디게이터 버튼) 이벤트 함수////////////////
+ 
                 //스토리 보드 : 현재 슬라이드가
                 //첫번째 슬라이드 이면 페이지 버튼 1 : [1] 두번째 슬라이드 이미지 s3Slide1.jpg
                 //첫번째 슬라이드 이면 페이지 버튼 2 : [2] 세번째 슬라이드 이미지 s3Slide2.jpg
@@ -489,7 +460,8 @@
 
                 }
                 */
-                //5. 페이지 버튼(인디게이터 버튼) 클릭 이벤트 //////////
+
+                ///////////////5.페이지 버튼(인디게이터 버튼) 클릭 이벤트////////////////
                 $pageBtn.each(function(idx){
                     $(this).on({
                         click:  function(e){
@@ -515,10 +487,20 @@
                         }
                     });    
                 });
+                
+
+
+
         },
         section4Fn:function(){
+
+            //슬라이드 컨테이너 박스 너비에 따른 슬라이드 3개의 너비 구하기
+            //1570-(20(마진값)*2)=1530
+            //1 슬라이드 너비는 1570/3=523.3333333
+            //반응형으로 슬라이드 컨테이너('.slide-container') 박스 너비 변화에 따른
+
             var totN            = $('#section4 .slide').length; //10
-            var slideN          = 3; //980초과 3, 980이하 2, 600 1
+            var slideN          = 3; //데스크탑 980초과 (이미지3개), 태블릿 980이하 (2개), 모바일 600 (1개)
             var $slideContainer = $('#section4 .slide-container');
             var slideW          = $('#section4 .slide-container').innerWidth()/slideN;
             var $slideWrap      = $('#section4 .slide-wrap');
@@ -530,18 +512,6 @@
             var setId2          = null;
 
 
-
-                ////////////////////////////////////////////////////////////////
-                ///////   메인 슬라이드  반응형 //////////////////////////////////
-                ////////////////////////////////////////////////////////////////
-                // 슬라이드 콘테이너 박스 너비에 따른 슬라이드 3개의 너비구하기
-                // 1570-(20(마진값)*2)=1530
-                // 슬라이드 너비는 1570/3=523.3333333 
-                // 반응형으로 슬라이드 콘테이너('.slide-container') 박스 너비 변화에 
-                // 따른 슬라이드 너비 계산 자동
-                //////////////////////////////////////////////////////////////////
-                
-                
                 function resizeFn(){
                     if($slideContainer.innerWidth()>1024){
                         slideN = 3;
@@ -554,14 +524,15 @@
                     }
 
                     slideW = $slideContainer.innerWidth()/slideN; //슬라이드 1개의 너비
-                    $slideWrap.css({width:(slideW*totN), marginLeft:-(slideW*3)}); //3 4 3 고정값
+                    /* 슬라이드는 ↘ 두 개가 무조건 들어가야 반응형이 됨 */
+                    $slideWrap.css({width:(slideW*totN), marginLeft:-(slideW*3)}); //3 4 3 총 10개
                     $slide.css({width:slideW, height:slideW-40});
                     // $slideWrap.stop().animate({left: -(slideW*cnt) },1000);//동적으로 하고싶으면
                     $slideWrap.stop().animate({left: -(slideW*cnt) },0);   //정적으로 하고싶으면
                     
                 }
 
-                setTimeout(resizeFn,10); //처음 로딩 시 once 1번만 실행 또는 새로고침
+                setTimeout(resizeFn,10); //처음 로딩 and 새로고침할 때 한번만 실행
 
                 $window.resize(function(){ //크기가 변경될 때만 반응
                     resizeFn();
@@ -569,12 +540,7 @@
 
 
 
-
-                ////////////////////////////////////////////////////////////////
-                ///////   메인 슬라이드 구현  ///////////////////////////////////
-                ////////////////////////////////////////////////////////////////
-
-                //1. 메인슬라이드 함수
+                //1. 메인 슬라이드 함수
                 function mainSlideFn(){
                     $slideWrap.stop().animate({left: -(slideW*cnt) },600, 'easeOutExpo', function(){
                         if(cnt>3){cnt=0;} //0 ~ 3(4개의 슬라이드)
@@ -657,6 +623,7 @@
                         }
                     },1000);
                 }
+
 
         },
         section5Fn:function(){

@@ -2,7 +2,9 @@
 
 
 @media all and (max-width:1360px){ /*if 창너비가 1281 ~ 1360이하이면 */
-    #wrap #main #section3 .wrap .gap .container .content .slide-container .page-wrap {width:calc(18.0882353%*2);}
+        /* #wrap #main #section3 .wrap .gap .container .content .slide-container .page-wrap {width:calc(246px*2);height:216px;} */
+                                                                                     /* 246/1360=0.1808823529 */
+    #wrap #main #section3 .wrap .gap .container .content .slide-container .page-wrap {width:calc(18.0882353%*2);/* height는 js에서 */}
     #wrap #main #section3 .wrap .gap .container .content .slide-container .slide-view .slide-wrap .slide  .slide-content .left-wrap {margin-left:3.5%}    
     #wrap #main #section3 .wrap .gap .container .content .slide-container .slide-view .slide-wrap .slide .slide-content .right-wrap {margin-right:3.5%}
     #wrap #main #section3 .wrap .gap .container .content .slide-container .arrow-wrap {right:4px;}    
@@ -13,31 +15,31 @@
     #wrap #main #section3 .wrap .gap .container .content .slide-container .arrow-wrap {bottom:3px;}    
 }
 
-@media all and (max-width:1280px){ /*if 창너비가 1025 ~ 1280이하이면 */
+@media all and (max-width:1280px){/* 메모7번 */
+        /* 
+#wrap #main #section1 .wrap .gap .container .slide-container .next-wrap {z-index:2;position:absolute;top:50%;right:8.7493431%;width:52px;height:100px;margin-top:-50px;}
+#wrap #main #section1 .wrap .gap .container .slide-container .prev-wrap {z-index:2;position:absolute;top:50%;left:8.7493431%;width:52px;height:100px;margin-top:-50px;}
+
+*/
     #wrap #main #section1 .wrap .gap .container .slide-container .next-wrap {right:calc(8.7493431%*.5);width:calc(52px*.5);height:calc(100px*.5);margin-top:calc(-50px*.5);}
     #wrap #main #section1 .wrap .gap .container .slide-container .prev-wrap {left:calc(8.7493431%*.5);width:calc(52px*.5);height:calc(100px*.5);margin-top:calc(-50px*.5);}
-    
-    #wrap #main #section5 .container ul li {width:33.333%;}
+    #wrap #main #section5 .container ul li {display:inline-block;width:33.333%}
 
 }
-@media all and (max-width:1024px){ /*if 창너비가 861 ~ 1024이하이면 */
-   
-    #wrap #header {height:84px;}
-    #wrap #nav {top:-84px;height:65px;}   
-    #wrap #nav .wrap .gap .container > ul > li   .sub {top:65px;height:65px;}
+@media all and (max-width:1024px){    /* 메모8번 */
 
-    #wrap #nav .wrap .gap .container > ul > li {margin:0 10px;}
-    #wrap #nav .wrap .gap .container > ul > li > a {padding:0 20px;font-size:16px;line-height:65px;}
-    #wrap #nav .wrap .gap .container > ul > li   .sub .sub-wrap .sub-gap ul li {margin:0 10px;line-height:65px;}
-    #wrap #nav .wrap .gap .container > ul > li   .sub .sub-wrap .sub-gap ul li a {font-size:15px;}
+    #wrap #header {height:84px;} /* 헤더 높이 줄어듦 */
+    #wrap #nav {top:-84px;}
 
     /* 로고 */
     #wrap #header .wrap .header-gap .container > ul > li:nth-child(1) a.logo-btn {width:190px;}    
     #wrap #header .wrap .header-gap .container > ul > li:nth-child(1) {top:23.5px;}
+    
     /* 햄버거 메뉴 */
     #wrap #header .wrap .header-gap .container > ul > li:nth-child(2) {padding:32px 0;}
     #wrap #header .wrap .header-gap .container > ul > li:nth-child(2) a .text {display:none;}    
     #wrap #header .wrap .header-gap .container > ul > li:nth-child(2) a .line-box {width:30px;height:20px;}
+    
     /* 사이드메뉴 */
     #wrap #header .wrap .header-gap .container > ul > li:nth-child(3) ul {padding:18px 0;}
     #wrap #header .wrap .header-gap .container > ul > li:nth-child(3) ul li span {margin-left:2px;}
@@ -59,44 +61,34 @@
     #wrap #main #section3 .wrap .gap .container .content .slide-container .slide-view .slide-wrap .slide .slide-content .right-wrap .text-gap .slide-text h4 {font-size:14px;}
     #wrap #main #section3 .wrap .gap .container .content .slide-container .slide-view .slide-wrap .slide .slide-content .right-wrap .text-gap .slide-text p {font-size:13px;line-height:130%;}
 
+
     
 }
 @media all and (max-width:860px){
     #wrap #footer .content .right-wrap .address-row1 .address-row1-left {float:none;margin-bottom:20px;padding-bottom:10px;}
     #wrap #footer .content .right-wrap .address-row1 .address-row1-right {float:none;padding-bottom:10px;}
+
 }
-
-@media all and (max-width:780px){
+@media all and (max-width:780px){/* 메모9번 */
     #wrap #header {height:64px;}
-
-
-    #wrap #nav {height:auto;top:0;background:rgba(111,24,78, .9);height:100%;min-height:100%;overflow-y:auto;/*높이가 부족한 경우만 스크롤*/}        
-    #wrap #nav .wrap .gap {margin:0;padding:94px 0 30px 0;}
-    #wrap #nav .wrap .gap .container > ul  {display:block;text-align:center;}
-    #wrap #nav .wrap .gap .container > ul > li {display:block;margin:0;}
-    #wrap #nav .wrap .gap .container > ul > li > a {padding:0;line-height:30px;background-color:transparent;color:#fff;}
-    #wrap #nav .wrap .gap .container > ul > li   .sub {display:block;position:relative;top:0;left:0;width:100%;height:auto;background-color:transparent;}
-    #wrap #nav .wrap .gap .container > ul > li   .sub .sub-wrap .sub-gap {margin:0;padding-bottom:20px;}
-    #wrap #nav .wrap .gap .container > ul > li   .sub .sub-wrap .sub-gap ul li {display:block;margin:0;line-height:22px;}
-    #wrap #nav .wrap .gap .container > ul > li   .sub .sub-wrap .sub-gap ul li a {color:#999;}
-    
-    
-
+    #wrap #nav {top:-64px;}
 
     /* 로고 */
     #wrap #header .wrap .header-gap .container > ul > li:nth-child(1) a.logo-btn {width:190px;}    
     #wrap #header .wrap .header-gap .container > ul > li:nth-child(1) {top:13.5px;}
+    
     /* 햄버거 메뉴 */
     #wrap #header .wrap .header-gap .container > ul > li:nth-child(2) {padding:22px 0 22px 20px;}
+    
     /* 사이드메뉴 */
-    #wrap #header .wrap .header-gap .container > ul > li:nth-child(3) ul {padding:0;}
+    #wrap #header .wrap .header-gap .container > ul > li:nth-child(3) ul {padding:0;}/*  36/2 */
     #wrap #header .wrap .header-gap .container > ul > li:nth-child(3) ul li span {margin-left:2px;}
     #wrap #header .wrap .header-gap .container > ul > li:nth-child(3) ul li span a {font-size:13px;}    
         
     #wrap #header .wrap .header-gap .container > ul > li:nth-child(3) ul li:nth-child(1) ,
     #wrap #header .wrap .header-gap .container > ul > li:nth-child(3) ul li:nth-child(2) ,
     #wrap #header .wrap .header-gap .container > ul > li:nth-child(3) ul li:nth-child(3) {display:none;}
-    #wrap #header .wrap .header-gap .container > ul > li:nth-child(3) ul li {float:right;}
+    #wrap #header .wrap .header-gap .container > ul > li:nth-child(3) ul li {float:right;}/* 모바일 돋보기 위치 왼쪽으로*/
     #wrap #header .wrap .header-gap .container > ul > li:nth-child(3) ul li > span a.confirm-btn {width:64px;height:64px;line-height:58px;background-color:#000;text-indent:0;font-size:13px;}
     #wrap #header .wrap .header-gap .container > ul > li:nth-child(3) ul li > span a.confirm-btn:after {display:none;}    
     #wrap #header .wrap .header-gap .container > ul > li:nth-child(3) ul li > span a.confirm-btn span {line-height:100%;}
@@ -119,16 +111,19 @@
     #wrap #main #section3 .wrap .gap .container .content .slide-container .arrow-wrap {bottom:2px;}        
     
 
-    #wrap #footer .content .left-wrap {float:none;width:/* 360px */100%;text-align:center;padding-bottom:20px;}    
-    #wrap #footer .content .right-wrap {float:none;width:/* 840px */100%;text-align:center;}
+    #wrap #footer .content .left-wrap {float:none;width:100%;/* 360px; */text-align:center;padding-bottom:20px;}
+    #wrap #footer .content .right-wrap {float: none;width:100%;/* 840px; */text-align:center;}
     #wrap #footer .content .right-wrap .address-row1 .address-row1-left {width:100%;}
     #wrap #footer .content .right-wrap .address-row1 .address-row1-left div {width:auto;}
     #wrap #footer .content .right-wrap .address-row1 .address-row1-right {width:100%;}
     #wrap #footer .content .right-wrap .address-row1 .address-row1-right div {width:auto;}
-    #wrap #footer .content .left-wrap h1 img {width:100%;max-width:160px;}
-    #wrap #footer .content .right-wrap .address-row1 .address-row1-left span {display:inline-block;margin:0 10px;}
+    #wrap #footer .content .left-wrap h1 img {width:100%;max-width: 160px;}
+    #wrap #footer .content .right-wrap .address-row1 .address-row1-left span {display:inline-block; margin:0 10px;}
     #wrap #footer .content .right-wrap .address-row1 .address-row1-right span:nth-child(2) {margin:0 20px;}
-    #wrap #footer .content .left-wrap h1 {width:100%;}    
+    #wrap #footer .content .left-wrap h1 {width:100%;}
+
+
+
 
 }
 
@@ -141,27 +136,29 @@
 }
 
 @media all and (max-width:500px){
+
     /* 로고 */
     #wrap #header .wrap .header-gap .container > ul > li:nth-child(1) a.logo-btn {width:160px;}    
     #wrap #header .wrap .header-gap .container > ul > li:nth-child(1) {top:16.7265px;}
-    #wrap #main #section5 .container ul li {width:50%;padding:0;}
-
+    #wrap #main #section5 .container ul li {padding:0;}
 }
-
 @media all and (max-width:410px){
-    #wrap #footer .content .right-wrap .address-row1 .address-row1-left {margin:0;}   
-    #wrap #footer .content .right-wrap .address-row1 .address-row1-left div {border:0;}   
-    #wrap #footer .content .right-wrap .address-row1 .address-row1-left span:last-child {padding-bottom:10px;padding-top:10px;border-bottom:1px solid #444;}    
-}
+    #wrap #footer .content .right-wrap .address-row1 .address-row1-left {margin:0;}
+    #wrap #footer .content .right-wrap .address-row1 .address-row1-left div {border:0;}
+    #wrap #footer .content .right-wrap .address-row1 .address-row1-left span:last-child {padding-bottom:10px;padding-top:10px; border-bottom:1px solid #444;}
 
+}
 @media all and (max-width:400px){
+
     /* 로고 */
     #wrap #header .wrap .header-gap .container > ul > li:nth-child(1) a.logo-btn {width:140px;}    
     #wrap #header .wrap .header-gap .container > ul > li:nth-child(1) {top:16.7265px;}
     #wrap #header .wrap .header-gap .container > ul > li:nth-child(3) ul li:nth-child(4) {margin-left:3px;}    
+    
     /* 햄버거 메뉴 */
     #wrap #header .wrap .header-gap .container > ul > li:nth-child(2) {padding:22px 0 22px 10px;}    
 }
 @media all and (max-width:360px){
-    #wrap #main #section5 .container ul li {width:100%;}
+
+    #wrap #main #section5 .container ul li {display:inline-block;width:100%;}
 }
