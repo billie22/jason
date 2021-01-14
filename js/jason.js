@@ -22,7 +22,7 @@
             var $mainBtn = $('.mainBtn');
             var $scroll = false;
             var t = false;
-            var m = 0; //메뉴 클릭 안한 상태
+            var m = 0; 
             var s = 1;
             var topPos = 124;
            
