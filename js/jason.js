@@ -5,7 +5,7 @@
         init:   function(){
             var that = this;
 
-            that.heaerFn();
+            that.headerFn();
             that.section1Fn();
             that.section2Fn();
             that.section3Fn();
@@ -13,7 +13,7 @@
             that.section5Fn();
 
         },
-        heaerFn:function(){
+        headerFn:function(){
             var that = null;
             var $window = $(window);            
             var $header = $('#header');
@@ -49,7 +49,7 @@
                         if( t===false ){
                             t=true;
                             var headerH = $('#header').height();
-                            $('html,body').stop().animate({scrollTop:$('#section2').offset().top-headerH},600,'easeInOutExpo');
+                            $('html,body').stop().animate({scrollTop:$('#main #section2').offset().top-headerH},600,'easeInOutExpo');
                         }
                         
                     }
@@ -118,13 +118,13 @@
         },
         section1Fn:function(){
             var cnt = 0;
-            var n = $('#section1 .slide').length-2; //4
-            var $sldie = $('#section1 .slide'); //4
-            var $nextBtn = $('#section1 .next-btn'); /* #section1 추가 */
-            var $prevBtn = $('#section1 .prev-btn');
-            var $slideWrap = $('#section1 .slide-wrap');
-            var $pageBtn = $('#section1 .page-btn');
-            var $smoothBtn = $('#section1 .smooth-btn');
+            var n = $('#main #section1 .slide').length-2; //4 /* 서브페이지와 구분하기 위해 메인 섹션마다 #main 전부 붙여줌 */
+            var $sldie = $('#main #section1 .slide'); //4
+            var $nextBtn = $('#main #section1 .next-btn'); /* #section1 추가 */
+            var $prevBtn = $('#main #section1 .prev-btn');
+            var $slideWrap = $('#main #section1 .slide-wrap');
+            var $pageBtn = $('#main #section1 .page-btn');
+            var $smoothBtn = $('#main #section1 .smooth-btn');
             var setId = null;
             var setId2 = null;
             var $second = 5; //4초 간격
@@ -221,7 +221,7 @@
             });
 
             //터치 스와이프 이벤트
-            $('#section1').swipe({
+            $('#main #section1').swipe({
                 swipeLeft:  function(event){ //다음 슬라이드
                     event.preventDefault();
                     clearInterval(setId);
@@ -263,8 +263,8 @@
                 function resizeFn(){
                     winW = $(window).width(); //리얼하게 너비
                     winH = $(window).height();//리얼하게 높이                    
-                    $('#section1').css({ height:winH }); //리얼하게 적용
-                    $('#section2').css({ marginTop:winH }); //리얼하게 적용
+                    $('#main #section1, #login #section1').css({ height:winH }); //리얼하게 적용
+                    $('#main #section2').css({ marginTop:winH }); //리얼하게 적용
                     $sldie.css({ width:winW });  //리얼하게 적요
                 }
                 setTimeout(resizeFn,10);
@@ -280,12 +280,12 @@
         section2Fn:function(){
 
             var $win = $(window);
-            var $gal = $('.gallery li');
-            var $galW = $('.gallery li').width();
+            var $gal = $('#main .gallery li');
+            var $galW = $('#main .gallery li').width();
             var $galH =  $galW * 0.832468967;
 
                 function resizeFn(){
-                    $galW = $('.gallery li').width(); //칸 너비
+                    $galW = $('#main .gallery li').width(); //칸 너비
                     $galH =  $galW * 0.832468967; //칸 높이 비율계산                  
                     $gal.css({height:$galH});
                 }
@@ -302,19 +302,19 @@
             //박스높이 slide View Box 너비가 1360이하이면 높이 자동 설정 높이 설정  
             var $window    = $(window);
             var $winW      = $(window).innerWidth();
-            var $slideView = $('#section3 .slide-view');
-            var $pageBtnW  = $('#section3 .pageBtn').innerWidth();
-            var $pageWrap  = $('#section3 .page-wrap');
-            var $slideBg   = $('#section3 .slide-bg-image');
-            var $slideBgW  = $('#section3 .slide-bg-image').innerWidth();
+            var $slideView = $('#main #section3 .slide-view');
+            var $pageBtnW  = $('#main #section3 .pageBtn').innerWidth();
+            var $pageWrap  = $('#main #section3 .page-wrap');
+            var $slideBg   = $('#main #section3 .slide-bg-image');
+            var $slideBgW  = $('#main #section3 .slide-bg-image').innerWidth();
 
                 // $pageBtnW = $('#section3 .pageBtn').innerWidth();
                 // $slideBgW.css({height:});
 
                 function resizeFn(){
                     $winW = $(window).innerWidth();
-                    $pageBtnW  = $('#section3 .pageBtn').innerWidth();
-                    $slideBgW  = $('#section3 .slide-bg-image').innerWidth();
+                    $pageBtnW  = $('#main #section3 .pageBtn').innerWidth();
+                    $slideBgW  = $('#main #section3 .slide-bg-image').innerWidth();
 
                     if($winW<=1360){                //570/1360=0.419117647
                         $slideView.css({height:$winW*0.419117647}); //570 = 1360 * 0.419117647
@@ -337,11 +337,11 @@
 
                 var cnt = 0;
                 var setId = null;
-                var n = $('#section3 .slide').length-1; //2 = 3-1 = index number(0 1 2)
-                var $nextBtn = $('#section3 .nextBtn');
-                var $prevBtn = $('#section3 .prevBtn');
-                var $slide   = $('#section3 .slide');
-                var $pageBtn = $('#section3 .pageBtn');
+                var n        = $('#main #section3 .slide').length-1; //2 = 3-1 = index number(0 1 2)
+                var $nextBtn = $('#main #section3 .nextBtn');
+                var $prevBtn = $('#main #section3 .prevBtn');
+                var $slide   = $('#main #section3 .slide');
+                var $pageBtn = $('#main #section3 .pageBtn');
                 var a = [1,2];
 
                 ///////////////1.메인 슬라이드 페이드 인아웃 함수////////////////
@@ -496,13 +496,13 @@
             //1 슬라이드 너비는 1570/3=523.3333333
             //반응형으로 슬라이드 컨테이너('.slide-container') 박스 너비 변화에 따른
 
-            var totN            = $('#section4 .slide').length; //10
+            var totN            = $('#main #section4 .slide').length; //10
             var slideN          = 3; //데스크탑 980초과 (이미지3개), 태블릿 980이하 (2개), 모바일 600 (1개)
-            var $slideContainer = $('#section4 .slide-container');
-            var slideW          = $('#section4 .slide-container').innerWidth()/slideN;
-            var $slideWrap      = $('#section4 .slide-wrap');
-            var $slide          = $('#section4 .slide');
-            var $pageBtn        = $('#section4 .pageBtn');
+            var $slideContainer = $('#main #section4 .slide-container');
+            var slideW          = $('#main #section4 .slide-container').innerWidth()/slideN;
+            var $slideWrap      = $('#main #section4 .slide-wrap');
+            var $slide          = $('#main #section4 .slide');
+            var $pageBtn        = $('#main #section4 .pageBtn');
             var $window         = $(window);
             var cnt             = 0;
             var setId           = null;
@@ -623,7 +623,10 @@
 
 
         },
-        section5Fn:function(){
+
+        //로그인 페이지
+
+        loginSection2Fn:function(){
 
         }
     };
